@@ -21,9 +21,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           {/* Brand */}
           <div>
-            <p className="text-lg font-semibold">
-              <span className="gradient-text">HS</span>
-              <span className="text-muted-foreground font-light">.dev</span>
+            <p className="text-lg font-semibold cursor-default">
+              <span className="gradient-text">hS</span>
             </p>
             <p className="text-sm text-muted-foreground mt-1">
               {developerInfo.title} • {developerInfo.subtitle}

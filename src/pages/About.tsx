@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { developerInfo, skillCategories, certifications, hobbies } from '@/data/developer';
+import { developerInfo, skillCategories, certifications, hobbies, experiences, researchPapers } from '@/data/developer';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { Award, GraduationCap } from 'lucide-react';
@@ -62,6 +62,77 @@ export default function About() {
           </div>
         </section>
 
+        {/* Experience Section */}
+        <section className="py-16 md:py-24 px-6 lg:px-8 border-t border-border">
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <div className="text-center mb-16 space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                  Work <span className="gradient-text">Experience</span>
+                </h2>
+              </div>
+            </ScrollReveal>
+
+            <div className="space-y-8">
+              {experiences.map((exp, index) => (
+                <ScrollReveal key={index} delay={index * 0.1}>
+                  <div className="glass-card rounded-xl p-6 md:p-8 gradient-border">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+                      <div>
+                        <h3 className="text-xl md:text-2xl font-bold text-foreground">{exp.role}</h3>
+                        <p className="text-lg text-primary font-medium mt-1">{exp.company}</p>
+                      </div>
+                      <div className="text-left md:text-right">
+                        <p className="text-sm font-medium bg-secondary/50 text-secondary-foreground px-3 py-1 rounded-full inline-block">
+                          {exp.duration}
+                        </p>
+                        <p className="text-sm text-muted-foreground mt-2">{exp.location}</p>
+                      </div>
+                    </div>
+                    <ul className="space-y-3 mt-4">
+                      {exp.responsibilities.map((resp, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="text-primary mt-1.5 flex-shrink-0">•</span>
+                          <span className="text-muted-foreground leading-relaxed">{resp}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Research & Publication Section */}
+        <section className="py-16 md:py-24 px-6 lg:px-8 border-t border-border">
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <div className="text-center mb-16 space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                  Research & <span className="gradient-text">Publication</span>
+                </h2>
+              </div>
+            </ScrollReveal>
+
+            <div className="space-y-6">
+              {researchPapers.map((paper, index) => (
+                <ScrollReveal key={index} delay={index * 0.1}>
+                  <div className="glass-card rounded-xl p-6 md:p-8 gradient-border transition-all duration-300 hover:shadow-[0_0_20px_var(--glow-primary)]">
+                    <h3 className="text-xl font-bold text-foreground mb-2">{paper.title}</h3>
+                    <p className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider uppercase bg-primary/10 text-primary rounded-full border border-primary/20">
+                      {paper.conference}
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {paper.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Skills */}
         <section className="py-16 md:py-24 px-6 lg:px-8 border-t border-border">
           <div className="max-w-6xl mx-auto">
@@ -93,6 +164,32 @@ export default function About() {
                 </ScrollReveal>
               ))}
             </div>
+
+            {/* Currently Working On */}
+            <ScrollReveal delay={0.3}>
+              <div className="mt-12 glass-card rounded-xl p-6 md:p-8 gradient-border">
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                  </span>
+                  <h3 className="text-xl font-semibold text-foreground">
+                    Currently <span className="gradient-text">Working On</span>
+                  </h3>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">Actively learning and building with these technologies right now:</p>
+                <div className="flex flex-wrap gap-3">
+                  {['Jenkins', 'Kubernetes'].map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-sm px-4 py-2 rounded-lg border border-primary/40 bg-primary/10 text-primary font-semibold tracking-wide hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
 

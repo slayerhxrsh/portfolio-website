@@ -6,7 +6,7 @@ import { Github, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
-const categories = ['all', 'frontend', 'devops', 'fullstack', 'blockchain'] as const;
+const categories = ['all', 'frontend', 'devops', 'fullstack'] as const;
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -58,33 +58,38 @@ export default function Portfolio() {
         {/* Projects Grid */}
         <section className="py-16 md:py-24 px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="columns-1 md:columns-2 gap-6 space-y-6">
               {filteredProjects.map((project, index) => (
-                <ScrollReveal key={project.id} delay={index * 0.1}>
+                <ScrollReveal key={project.id} delay={index * 0.1} className="break-inside-avoid">
                   <motion.div
                     layout
-                    className="group glass-card rounded-xl p-6 transition-all duration-300 hover:shadow-[0_0_30px_var(--glow-primary)] gradient-border"
+                    className="group glass-card rounded-xl p-6 transition-all duration-300 hover:shadow-[0_0_30px_var(--glow-primary)] gradient-border flex flex-col h-full bg-card"
                   >
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
+                    <div className="flex flex-col flex-1">
+                      <div className="flex items-center justify-between mb-4">
                         <span className="text-xs font-medium tracking-wider uppercase text-primary">
                           {project.category}
                         </span>
                       </div>
-                      <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {project.coverImage && (
+                        <div className="overflow-hidden rounded-lg aspect-video mb-4">
+                           <img src={project.coverImage} alt={project.title} className="object-cover w-full h-full hover:scale-105 transition-transform duration-500" />
+                        </div>
+                      )}
+                      <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors mb-3">
                         {project.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                         {project.longDescription || project.description}
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {project.techStack.map((tech) => (
                           <span key={tech} className="text-xs px-3 py-1 rounded-full bg-secondary text-secondary-foreground font-medium">
                             {tech}
                           </span>
                         ))}
                       </div>
-                      <div className="flex gap-3 pt-2">
+                      <div className="flex gap-4 mt-auto pt-4 border-t border-border/40">
                         {project.githubUrl && (
                           <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
                             className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">

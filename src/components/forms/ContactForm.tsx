@@ -31,8 +31,44 @@ export function ContactForm() {
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
     try {
-      // Simulate submission — replace with actual endpoint
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSejxwrYW4mm416L2FiRbhLEftvQdq6zZEroadySR95YvxxjLA/formResponse";
+
+      // Use a hidden iframe + native form POST to bypass CORS restrictions.
+      // fetch() with no-cors gets blocked by browsers for Google domains.
+      const iframe = document.createElement('iframe');
+      iframe.name = 'hidden_iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+
+      const hiddenForm = document.createElement('form');
+      hiddenForm.action = FORM_URL;
+      hiddenForm.method = 'POST';
+      hiddenForm.target = 'hidden_iframe';
+      hiddenForm.style.display = 'none';
+
+      const fields: Record<string, string> = {
+        'entry.382250599': data.name,
+        'entry.738783265': data.email,
+        'entry.2096459469': data.message,
+      };
+
+      Object.entries(fields).forEach(([name, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        hiddenForm.appendChild(input);
+      });
+
+      document.body.appendChild(hiddenForm);
+      hiddenForm.submit();
+
+      // Clean up after submission
+      setTimeout(() => {
+        document.body.removeChild(hiddenForm);
+        document.body.removeChild(iframe);
+      }, 2000);
+
       setIsSuccess(true);
       form.reset();
       setTimeout(() => setIsSuccess(false), 5000);

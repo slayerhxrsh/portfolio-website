@@ -49,3 +49,17 @@ export interface ContactSubmission {
   email: string;
   message: string;
 }
+
+export interface Experience {
+  role: string;
+  company: string;
+  duration: string;
+  location: string;
+  responsibilities: string[];
+}
+
+export interface ResearchPaper {
+  title: string;
+  conference: string;
+  description: string;
+}

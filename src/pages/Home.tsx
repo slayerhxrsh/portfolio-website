@@ -37,12 +37,13 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="flex justify-center"
             >
-              <div className="relative">
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary to-[hsl(190,95%,55%)] blur-sm opacity-75" />
+              <div className="relative group">
+                <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-primary via-[hsl(190,95%,55%)] to-primary opacity-75 blur-md group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-primary to-[hsl(190,95%,55%)] z-0" />
                 <img
                   src={profilePhoto}
                   alt="Harsh Srivastava"
-                  className="relative w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-2 border-background"
+                  className="relative z-10 w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-background"
                 />
               </div>
             </motion.div>
@@ -55,7 +56,7 @@ export default function Home() {
               className="space-y-4"
             >
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-                <span className="gradient-text">{developerInfo.name}</span>
+                <span className="gradient-text">Harsh Srivastava</span>
               </h1>
               <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-lg md:text-xl text-muted-foreground">
                 <span className="font-medium text-foreground">{developerInfo.title}</span>
@@ -147,23 +148,28 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {featuredProjects.map((project, index) => (
-                <ScrollReveal key={project.id} delay={index * 0.1}>
-                  <div className="group relative glass-card rounded-xl p-6 transition-all duration-300 hover:shadow-[0_0_30px_var(--glow-primary)] gradient-border">
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
+            <div className="columns-1 md:columns-2 gap-6 space-y-6">
+              {featuredProjects.slice(0, 4).map((project, index) => (
+                <ScrollReveal key={project.id} delay={index * 0.1} className="break-inside-avoid mb-6">
+                  <div className="group relative glass-card rounded-xl p-6 transition-all duration-300 hover:shadow-[0_0_30px_var(--glow-primary)] gradient-border flex flex-col h-full">
+                    <div className="flex flex-col flex-1">
+                      <div className="flex items-center justify-between mb-4">
                         <span className="text-xs font-medium tracking-wider uppercase text-primary">
                           {project.category}
                         </span>
                       </div>
-                      <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {project.coverImage && (
+                        <div className="overflow-hidden rounded-lg aspect-video mb-4">
+                           <img src={project.coverImage} alt={project.title} className="object-cover w-full h-full hover:scale-105 transition-transform duration-500" />
+                        </div>
+                      )}
+                      <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors mb-3">
                         {project.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                         {project.description}
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {project.techStack.map((tech) => (
                           <span
                             key={tech}
@@ -173,7 +179,7 @@ export default function Home() {
                           </span>
                         ))}
                       </div>
-                      <div className="flex gap-3 pt-2">
+                      <div className="flex gap-4 mt-auto pt-4 border-t border-border/40">
                         {project.githubUrl && (
                           <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
                             className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">

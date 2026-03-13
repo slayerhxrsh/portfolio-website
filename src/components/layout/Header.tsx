@@ -50,14 +50,8 @@ export function Header() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="gradient-text"
             >
-              HS
+              hS
             </motion.span>
-            <span className={cn(
-              'ml-1 font-light',
-              isTransparent ? 'text-white/80' : 'text-muted-foreground'
-            )}>
-              .dev
-            </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">
