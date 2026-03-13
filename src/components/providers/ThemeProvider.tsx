@@ -3,24 +3,15 @@ import { ReactNode } from 'react';
 
 interface ThemeProviderProps {
   children: ReactNode;
-  attribute?: string;
-  defaultTheme?: string;
-  enableSystem?: boolean;
-  disableTransitionOnChange?: boolean;
 }
 
-/**
- * Theme Provider component wrapping next-themes
- * Provides dark mode support with system preference detection
- */
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+export function ThemeProvider({ children }: ThemeProviderProps) {
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="dark"
       enableSystem
-      disableTransitionOnChange
-      {...props}
+      storageKey="harsh-portfolio-theme"
     >
       {children}
     </NextThemesProvider>
