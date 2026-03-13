@@ -1,161 +1,209 @@
 import { motion } from 'framer-motion';
-import { photographerInfo } from '@/data/photographer';
-import { getFeaturedProjects } from '@/data/projects';
-import { ProjectCard } from '@/components/portfolio/ProjectCard';
-import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
+import { developerInfo, getFeaturedProjects } from '@/data/developer';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 import { SEOHead } from '@/components/seo/SEOHead';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import profilePhoto from '@/assets/profile-photo.jpg';
 
-/**
- * Homepage with immersive hero section and featured projects grid
- * Showcases photographer's best work with minimal, elegant design
- */
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
 
   return (
     <>
-      <SEOHead />
-      
+      <SEOHead
+        title="Harsh Srivastava — DevOps & Frontend Engineer"
+        description={developerInfo.tagline}
+      />
+
       <div className="min-h-screen">
-        {/* Hero Section - Full viewport with featured image */}
-      <section className="relative h-screen w-full overflow-hidden">
-        {/* Background Video */}
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster="https://images.pexels.com/videos/2675516/free-video-2675516.jpg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200"
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              const target = e.currentTarget;
-              target.style.opacity = '0';
-            }}
-          >
-            <source src="https://videos.pexels.com/video-files/2675516/2675516-sd_960_540_24fps.mp4" type="video/mp4" />
-          </video>
-          {/* Video from Pexels */}
-          {/* Gradient Overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
-        </div>
+        {/* Hero Section */}
+        <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
+          {/* Animated gradient background */}
+          <div className="absolute inset-0 bg-background">
+            <div className="absolute inset-0 tech-grid-bg opacity-50" />
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-[120px] animate-[pulse-glow_4s_ease-in-out_infinite]" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-[hsl(190_95%_55%_/_0.1)] blur-[120px] animate-[pulse-glow_4s_ease-in-out_infinite_1s]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+          </div>
 
-        {/* Hero Content */}
-        <div className="relative h-full flex flex-col items-center justify-center px-6">
-          <motion.div
-            className="text-center space-y-6 max-w-4xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <motion.h1
-              className="text-6xl md:text-8xl lg:text-9xl font-extralight tracking-widest text-white"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
+          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center space-y-8">
+            {/* Profile Photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="flex justify-center"
             >
-              {photographerInfo.name.toUpperCase()}
-            </motion.h1>
-            
+              <div className="relative">
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary to-[hsl(190,95%,55%)] blur-sm opacity-75" />
+                <img
+                  src={profilePhoto}
+                  alt="Harsh Srivastava"
+                  className="relative w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-2 border-background"
+                />
+              </div>
+            </motion.div>
+
+            {/* Name & Titles */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-4"
+            >
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+                <span className="gradient-text">{developerInfo.name}</span>
+              </h1>
+              <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-lg md:text-xl text-muted-foreground">
+                <span className="font-medium text-foreground">{developerInfo.title}</span>
+                <span className="hidden md:block text-border">|</span>
+                <span>{developerInfo.subtitle}</span>
+              </div>
+            </motion.div>
+
+            {/* Tagline */}
             <motion.p
-              className="text-xl md:text-2xl font-light tracking-wide text-white/90"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
             >
-              {photographerInfo.tagline}
+              {developerInfo.tagline}
             </motion.p>
 
-            <motion.p
-              className="text-base md:text-lg font-light leading-relaxed text-white/80 max-w-2xl mx-auto"
+            {/* CTA Buttons */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              {photographerInfo.heroIntroduction}
-            </motion.p>
-          </motion.div>
+              <Link to="/portfolio">
+                <Button size="lg" className="gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-8">
+                  View Projects
+                  <ArrowRight className="size-4" />
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button size="lg" variant="outline" className="gap-2 px-8 glass-card">
+                  Contact Me
+                </Button>
+              </Link>
+              <a href="/HarshSrivastavaResume.pdf" download>
+                <Button size="lg" variant="ghost" className="gap-2 px-8">
+                  <Download className="size-4" />
+                  Resume
+                </Button>
+              </a>
+            </motion.div>
+
+            {/* Social links */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex justify-center gap-4"
+            >
+              {developerInfo.socialLinks.github && (
+                <a href={developerInfo.socialLinks.github} target="_blank" rel="noopener noreferrer"
+                  className="p-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-all">
+                  <Github className="size-5" />
+                </a>
+              )}
+              {developerInfo.socialLinks.linkedin && (
+                <a href={developerInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
+                  className="p-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-all">
+                  <Linkedin className="size-5" />
+                </a>
+              )}
+            </motion.div>
+          </div>
 
           {/* Scroll Indicator */}
           <motion.div
-            className="absolute bottom-12"
+            className="absolute bottom-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}
           >
             <ScrollIndicator />
           </motion.div>
-        </div>
-      </section>
+        </section>
 
-        {/* Introduction Section */}
-        <section className="py-24 md:py-32 px-6 lg:px-8 bg-background">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
+        {/* Featured Projects */}
+        <section className="py-24 md:py-32 px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
             <ScrollReveal>
-              <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-light tracking-wide">
-              About My Work
-            </h2>
-            <div className="space-y-4 text-lg font-light leading-relaxed text-muted-foreground">
-              <p>
-                {photographerInfo.biography.split('\n\n')[0]}
-              </p>
+              <div className="text-center mb-16 space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                  Featured <span className="gradient-text">Projects</span>
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  A selection of my recent work across DevOps and Frontend development
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {featuredProjects.map((project, index) => (
+                <ScrollReveal key={project.id} delay={index * 0.1}>
+                  <div className="group relative glass-card rounded-xl p-6 transition-all duration-300 hover:shadow-[0_0_30px_var(--glow-primary)] gradient-border">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-medium tracking-wider uppercase text-primary">
+                          {project.category}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.techStack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-xs px-3 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex gap-3 pt-2">
+                        {project.githubUrl && (
+                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+                            className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
+                            <Github className="size-4" /> Code
+                          </a>
+                        )}
+                        {project.liveUrl && (
+                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
+                            className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
+                            <ArrowRight className="size-4" /> Live Demo
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
-                <Link
-                  to="/about"
-                  className="inline-flex items-center gap-2 text-base font-light tracking-wide text-foreground hover:text-muted-foreground transition-colors group"
-                >
-                  <span>Learn More About Me</span>
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+
+            <ScrollReveal delay={0.4}>
+              <div className="flex justify-center mt-12">
+                <Link to="/portfolio">
+                  <Button variant="outline" size="lg" className="gap-2 glass-card">
+                    Explore Full Portfolio
+                    <ArrowRight className="size-4" />
+                  </Button>
                 </Link>
               </div>
             </ScrollReveal>
           </div>
-        </section>
-
-        {/* Featured Projects Section */}
-        <section className="py-24 md:py-32 border-t border-border">
-          {/* Section Header */}
-          <ScrollReveal>
-            <div className="text-center mb-16 space-y-4 px-6">
-              <h2 className="text-4xl md:text-5xl font-light tracking-wide">
-                Featured Projects
-              </h2>
-              <p className="text-lg text-muted-foreground font-light tracking-wide">
-                A selection of recent work
-              </p>
-            </div>
-          </ScrollReveal>
-
-          {/* Projects Grid - Edge to edge with minimal gaps */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                aspectRatio="landscape"
-                showCategory={true}
-                index={index}
-              />
-            ))}
-          </div>
-
-          {/* View All Link */}
-          <ScrollReveal delay={0.4}>
-            <div className="flex justify-center mt-16 px-6">
-              <Link
-                to="/portfolio"
-                className="group inline-flex items-center gap-2 text-lg font-light tracking-wide text-foreground hover:text-muted-foreground transition-colors"
-              >
-                <span>View All Projects</span>
-                <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </ScrollReveal>
         </section>
       </div>
     </>

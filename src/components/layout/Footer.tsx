@@ -1,71 +1,76 @@
-import { Instagram, Linkedin } from 'lucide-react';
-import { photographerInfo } from '@/data/photographer';
-import { Separator } from '@/components/ui/separator';
+import { Github, Linkedin, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { developerInfo } from '@/data/developer';
 
-/**
- * Minimal footer component with social links and copyright
- */
+const navLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'Portfolio', path: '/portfolio' },
+  { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' },
+];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border">
+    <footer className="relative border-t border-border">
+      {/* Gradient top border */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Copyright */}
-          <p className="text-sm text-muted-foreground font-light tracking-wide">
-            © {currentYear} {photographerInfo.name}. All rights reserved.
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          {/* Brand */}
+          <div>
+            <p className="text-lg font-semibold">
+              <span className="gradient-text">HS</span>
+              <span className="text-muted-foreground font-light">.dev</span>
+            </p>
+            <p className="text-sm text-muted-foreground mt-1">
+              {developerInfo.title} • {developerInfo.subtitle}
+            </p>
+          </div>
+
+          {/* Nav Links */}
+          <div className="flex justify-center gap-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-6">
-            {photographerInfo.socialLinks.instagram && (
-              <a
-                href={photographerInfo.socialLinks.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="size-5" />
+          <div className="flex justify-end gap-4">
+            {developerInfo.socialLinks.github && (
+              <a href={developerInfo.socialLinks.github} target="_blank" rel="noopener noreferrer"
+                className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-all hover:shadow-[0_0_15px_var(--glow-primary)]"
+                aria-label="GitHub">
+                <Github className="size-5" />
               </a>
             )}
-            {photographerInfo.socialLinks.linkedin && (
-              <a
-                href={photographerInfo.socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="LinkedIn"
-              >
+            {developerInfo.socialLinks.linkedin && (
+              <a href={developerInfo.socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
+                className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-all hover:shadow-[0_0_15px_var(--glow-primary)]"
+                aria-label="LinkedIn">
                 <Linkedin className="size-5" />
               </a>
             )}
-            {photographerInfo.socialLinks.behance && (
-              <a
-                href={photographerInfo.socialLinks.behance}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Behance"
-              >
-                <svg
-                  className="size-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M3 8h6a3 3 0 0 1 0 6H3V8z" />
-                  <path d="M3 14h7a3 3 0 0 1 0 6H3v-6z" />
-                  <path d="M14 7h7" />
-                  <path d="M17 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
-                </svg>
-              </a>
-            )}
+            <a href={`mailto:${developerInfo.email}`}
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-all hover:shadow-[0_0_15px_var(--glow-primary)]"
+              aria-label="Email">
+              <Mail className="size-5" />
+            </a>
           </div>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-border text-center">
+          <p className="text-sm text-muted-foreground">
+            © {currentYear} {developerInfo.name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

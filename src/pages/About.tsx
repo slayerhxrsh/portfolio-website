@@ -1,176 +1,152 @@
 import { motion } from 'framer-motion';
-import { Instagram, Linkedin } from 'lucide-react';
-import { photographerInfo } from '@/data/photographer';
-import { Separator } from '@/components/ui/separator';
+import { developerInfo, skillCategories, certifications, hobbies } from '@/data/developer';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SEOHead } from '@/components/seo/SEOHead';
+import { Award, GraduationCap } from 'lucide-react';
+import profilePhoto from '@/assets/profile-photo.jpg';
 
-/**
- * About page with photographer biography and professional information
- * Features split layout with portrait video and comprehensive biography
- */
 export default function About() {
   return (
     <>
-      <SEOHead
-        title="About"
-        description={`Learn about ${photographerInfo.name}, ${photographerInfo.tagline}. ${photographerInfo.biography.split('\n\n')[0]}`}
-        image={photographerInfo.portraitImage}
-      />
-      
+      <SEOHead title="About" description={`Learn about ${developerInfo.name}, ${developerInfo.title}.`} />
+
       <div className="min-h-screen">
-        {/* Hero Section */}
-      <section className="py-24 md:py-32 px-6 lg:px-8 border-b border-border">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <motion.div
-            initial={{ opacity: 0.8, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide mb-4">
-              About
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide">
-              Photographer & Visual Storyteller
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Portrait and Biography - Split Layout */}
-      <section className="py-16 md:py-24 px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Portrait Image */}
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0.8, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-            >
-              <div className="aspect-[3/4] relative overflow-hidden rounded-sm bg-muted">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  poster="https://images.pexels.com/videos/3888252/afro-hair-fashion-model-3888252.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = 'none';
-                  }}
-                >
-                  <source src="https://videos.pexels.com/video-files/3888252/3888252-sd_426_226_25fps.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                {/* Video from Pexels */}
-              </div>
-              
-              {/* Social Links */}
-              <div className="flex items-center gap-4">
-                {photographerInfo.socialLinks.instagram && (
-                  <a
-                    href={photographerInfo.socialLinks.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 border border-border rounded-sm hover:bg-accent transition-colors"
-                    aria-label="Instagram"
-                  >
-                    <Instagram className="size-5" />
-                  </a>
-                )}
-                {photographerInfo.socialLinks.linkedin && (
-                  <a
-                    href={photographerInfo.socialLinks.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 border border-border rounded-sm hover:bg-accent transition-colors"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="size-5" />
-                  </a>
-                )}
-                {photographerInfo.socialLinks.behance && (
-                  <a
-                    href={photographerInfo.socialLinks.behance}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 border border-border rounded-sm hover:bg-accent transition-colors"
-                    aria-label="Behance"
-                  >
-                    <svg
-                      className="size-5"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M3 8h6a3 3 0 0 1 0 6H3V8z" />
-                      <path d="M3 14h7a3 3 0 0 1 0 6H3v-6z" />
-                      <path d="M14 7h7" />
-                      <path d="M17 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
-                    </svg>
-                  </a>
-                )}
-              </div>
-            </motion.div>
-
-            {/* Biography and Info */}
-            <motion.div
-              className="space-y-8"
-              initial={{ opacity: 0.8, x: 10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-            >
-              {/* Name and Tagline */}
-              <div className="space-y-3">
-                <h2 className="text-4xl md:text-5xl font-light tracking-wide">
-                  {photographerInfo.name}
-                </h2>
-                <p className="text-xl text-muted-foreground font-light tracking-wide">
-                  {photographerInfo.tagline}
-                </p>
-              </div>
-
-              <Separator />
-
-              {/* Biography */}
-              <div className="space-y-4">
-                {photographerInfo.biography.split('\n\n').map((paragraph, index) => (
-                  <p
-                    key={index}
-                    className="text-base md:text-lg font-light leading-relaxed text-muted-foreground"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-
-              {/* Contact Info */}
-              <div className="pt-4 space-y-2">
-                <div className="text-sm font-light tracking-wide">
-                  <span className="text-muted-foreground">Email: </span>
-                  <a
-                    href={`mailto:${photographerInfo.email}`}
-                    className="text-foreground hover:text-muted-foreground transition-colors"
-                  >
-                    {photographerInfo.email}
-                  </a>
-                </div>
-                <div className="text-sm font-light tracking-wide">
-                  <span className="text-muted-foreground">Location: </span>
-                  <span className="text-foreground">{photographerInfo.location}</span>
-                </div>
-              </div>
+        {/* Hero */}
+        <section className="relative py-24 md:py-32 px-6 lg:px-8 border-b border-border">
+          <div className="absolute inset-0 tech-grid-bg opacity-30" />
+          <div className="relative max-w-4xl mx-auto text-center space-y-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4">
+                About <span className="gradient-text">Me</span>
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground">{developerInfo.title} • {developerInfo.subtitle}</p>
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Bio Section */}
+        <section className="py-16 md:py-24 px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
+              <ScrollReveal>
+                <div className="space-y-6">
+                  <div className="relative">
+                    <div className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-primary/20 to-[hsl(190,95%,55%)]/20 blur-xl" />
+                    <img
+                      src={profilePhoto}
+                      alt="Harsh Srivastava"
+                      className="relative w-full aspect-[3/4] object-cover rounded-2xl"
+                    />
+                  </div>
+                  <div className="glass-card rounded-xl p-4 flex items-center gap-3">
+                    <GraduationCap className="size-5 text-primary" />
+                    <div>
+                      <p className="text-sm font-medium">{developerInfo.education}</p>
+                      <p className="text-xs text-muted-foreground">{developerInfo.university}</p>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.1}>
+                <div className="space-y-6">
+                  <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                    <span className="gradient-text">{developerInfo.name}</span>
+                  </h2>
+                  {developerInfo.bio.split('\n\n').map((p, i) => (
+                    <p key={i} className="text-muted-foreground leading-relaxed">{p}</p>
+                  ))}
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section className="py-16 md:py-24 px-6 lg:px-8 border-t border-border">
+          <div className="max-w-6xl mx-auto">
+            <ScrollReveal>
+              <div className="text-center mb-16 space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                  Technical <span className="gradient-text">Skills</span>
+                </h2>
+                <p className="text-muted-foreground text-lg">Technologies and tools I work with</p>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {skillCategories.map((category, catIndex) => (
+                <ScrollReveal key={category.title} delay={catIndex * 0.1}>
+                  <div className="glass-card rounded-xl p-6 h-full gradient-border transition-all duration-300 hover:shadow-[0_0_20px_var(--glow-primary)]">
+                    <h3 className="text-lg font-semibold mb-4 text-primary">{category.title}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill) => (
+                        <span
+                          key={skill.name}
+                          className="text-sm px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground font-medium transition-all hover:bg-primary hover:text-primary-foreground"
+                        >
+                          {skill.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Certifications */}
+        <section className="py-16 md:py-24 px-6 lg:px-8 border-t border-border">
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <div className="text-center mb-12 space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                  <span className="gradient-text">Certifications</span>
+                </h2>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {certifications.map((cert, index) => (
+                <ScrollReveal key={cert.title} delay={index * 0.1}>
+                  <div className="glass-card rounded-xl p-5 flex items-start gap-4 gradient-border transition-all duration-300 hover:shadow-[0_0_15px_var(--glow-primary)]">
+                    <Award className="size-5 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-medium text-sm">{cert.title}</p>
+                      <p className="text-xs text-muted-foreground">{cert.issuer}</p>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Hobbies */}
+        <section className="py-16 md:py-24 px-6 lg:px-8 border-t border-border">
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <div className="text-center mb-12 space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                  Beyond <span className="gradient-text">Code</span>
+                </h2>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {hobbies.map((hobby, index) => (
+                <ScrollReveal key={hobby.name} delay={index * 0.1}>
+                  <div className="glass-card rounded-xl p-6 text-center gradient-border transition-all duration-300 hover:shadow-[0_0_20px_var(--glow-primary)] hover:-translate-y-1">
+                    <div className="text-4xl mb-3">{hobby.icon}</div>
+                    <h3 className="font-semibold text-sm mb-1">{hobby.name}</h3>
+                    <p className="text-xs text-muted-foreground">{hobby.description}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );
