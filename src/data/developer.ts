@@ -127,6 +127,16 @@ export const projects: DevProject[] = [
     githubUrl: 'https://github.com/slayerhxrsh/RentX-Home-Rental-Website',
     featured: true,
   },
+  {
+    id: 'jenkins-cicd',
+    title: 'Django Notes App CI/CD Pipeline',
+    slug: 'django-notes-app-ci-cd-pipeline',
+    description: 'Deployed a Django notes app fully through continuous Integration(CI) & continuous deployment(CD) using webhooks, pushing on DockerHub, EC2, and deploying through Docker Compose.',
+    longDescription: 'Deployed a Django notes app fully through continuous Integration(CI) & continuous deployment(CD). The pipeline automates testing, building, and pushing Docker images to DockerHub using Jenkins and GitHub Webhooks. It continuously deploys to an AWS EC2 instance using Docker Compose for seamless container orchestration.',
+    techStack: ['Jenkins', 'Docker', 'Docker Compose', 'AWS EC2', 'Django'],
+    category: 'devops',
+    featured: true,
+  },
 ];
 
 export const getProjectBySlug = (slug: string) => projects.find(p => p.slug === slug);
@@ -197,11 +207,15 @@ export const skillCategories: SkillCategory[] = [
 ];
 
 export const certifications: Certification[] = [
-  { title: 'Python for Everybody', issuer: 'Coursera' },
-  { title: 'Intelligent Systems in AI', issuer: 'Infosys Springboard' },
-  { title: 'Introduction to Databases', issuer: 'Coursera' },
-  { title: 'Foundation of Cloud IoT and Edge ML', issuer: 'NPTEL' },
-  { title: 'Intelligent Systems and Smart Applications', issuer: 'Chandigarh University' },
+  { title: 'Python for Everybody', issuer: 'Coursera', url: 'https://drive.google.com/file/d/1gJmX914-_3B9gAWZzxQ_sjqqLVFszeG_/view?usp=sharing' },
+  { title: 'Intelligent Systems in AI', issuer: 'Infosys Springboard', url: 'https://drive.google.com/file/d/1-yv99Ou6JrFdoP13L6lBrXPAERJiZTcl/view?usp=drive_link' },
+  { title: 'Introduction to Databases', issuer: 'Coursera', url: 'https://drive.google.com/file/d/1GZ-pxmgzNgBPgWKLTiAtDYUnBvSYvqWa/view?usp=sharing' },
+  { title: 'Intelligent Systems and Smart Applications', issuer: 'Chandigarh University', url: 'https://drive.google.com/file/d/1FcJaDxuAPK2VBs_f6FBKyMx6FHaeewfL/view?usp=sharing' },
+  { title: '5G Network Fundamentals', issuer: 'Coursera', url: 'https://drive.google.com/file/d/1c_-Y4x7zk6MaTAWeXg3Th_8D-0JZtBar/view?usp=sharing' },
+  { title: 'Foundation of Cloud IoT and Edge ML', issuer: 'NPTEL', url: 'https://drive.google.com/file/d/1Cv3Xfg6M9S-JVOl4JE0YMF6JH4rKGmiB/view?usp=sharing' },
+  { title: 'Introduction to AI', issuer: 'IBM + Coursera', url: 'https://drive.google.com/file/d/19sHoFfFAe56PzJFijVzJgnDsvbRo4H4p/view?usp=sharing' },
+  { title: 'React Native', issuer: 'Meta + Coursera', url: 'https://drive.google.com/file/d/1nHjUPH-f5eYBiQHWKMypvwMkstZ7JmoK/view?usp=sharing' },
+  { title: 'Architecting Smart IoT Devices', issuer: 'Google?', url: 'https://drive.google.com/file/d/1R_tseHEAKx_cRtoMkJASQq80HA--soSi/view?usp=sharing' },
 ];
 
 export const hobbies = [

@@ -205,17 +205,29 @@ export default function About() {
             </ScrollReveal>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {certifications.map((cert, index) => (
-                <ScrollReveal key={cert.title} delay={index * 0.1}>
-                  <div className="glass-card rounded-xl p-5 flex items-start gap-4 gradient-border transition-all duration-300 hover:shadow-[0_0_15px_var(--glow-primary)]">
+              {certifications.map((cert, index) => {
+                const CardContent = (
+                  <div className="glass-card rounded-xl p-5 flex items-start gap-4 gradient-border transition-all duration-300 hover:shadow-[0_0_15px_var(--glow-primary)] w-full h-full">
                     <Award className="size-5 text-primary shrink-0 mt-0.5" />
                     <div>
                       <p className="font-medium text-sm">{cert.title}</p>
                       <p className="text-xs text-muted-foreground">{cert.issuer}</p>
                     </div>
                   </div>
-                </ScrollReveal>
-              ))}
+                );
+
+                return (
+                  <ScrollReveal key={cert.title} delay={index * 0.1}>
+                    {cert.url ? (
+                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="block h-full">
+                        {CardContent}
+                      </a>
+                    ) : (
+                      <div className="h-full">{CardContent}</div>
+                    )}
+                  </ScrollReveal>
+                );
+              })}
             </div>
           </div>
         </section>
