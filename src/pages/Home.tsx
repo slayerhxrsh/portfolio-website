@@ -93,7 +93,7 @@ export default function Home() {
                   Contact Me
                 </Button>
               </Link>
-              <a href="/Resume_Harsh%20Srivastava.pdf" download="Resume_Harsh_Srivastava.pdf">
+              <a href="/Resume-Harsh-Srivastava.pdf" download="Resume-Harsh-Srivastava.pdf">
                 <Button size="lg" variant="ghost" className="gap-2 px-8">
                   <Download className="size-4" />
                   Resume
@@ -160,7 +160,7 @@ export default function Home() {
                       </div>
                       {project.coverImage && (
                         <div className="overflow-hidden rounded-lg aspect-video mb-4">
-                           <img src={project.coverImage} alt={project.title} className="object-cover w-full h-full hover:scale-105 transition-transform duration-500" />
+                          <img src={project.coverImage} alt={project.title} className="object-cover w-full h-full hover:scale-105 transition-transform duration-500" />
                         </div>
                       )}
                       <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors mb-3">
