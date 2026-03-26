@@ -227,15 +227,15 @@ export const hobbies = [
 
 export const experiences: Experience[] = [
   {
-    role: 'Operations and Treasurer (Domain Head)',
-    company: 'Eloquence Consortium (IEEE Club) – Chandigarh University',
+    role: 'Operations and Treasurer (Student Member)',
+    company: 'Eloquence Consortium – Chandigarh University',
     duration: 'August 2024 – April 2025',
     location: 'Mohali, Punjab',
     responsibilities: [
       'Oversaw planning and execution of technical workshops, club events, and team meetings',
       'Managed fundraising initiatives, sponsorships, and membership fee collection',
       'Collaborated with executive committee members on operational planning',
-      'Prepared and presented financial reports for the IEEE chapter',
+      'Prepared and presented financial reports',
     ],
   },
 ];
