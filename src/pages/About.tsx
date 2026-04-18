@@ -2,8 +2,18 @@ import { motion } from 'framer-motion';
 import { developerInfo, skillCategories, certifications, hobbies, experiences, researchPapers } from '@/data/developer';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SEOHead } from '@/components/seo/SEOHead';
-import { Award, GraduationCap } from 'lucide-react';
+import { Award, GraduationCap, ChevronDown } from 'lucide-react';
 import profilePhoto from '@/assets/profile-photo.jpg';
+
+const SectionScrollHint = () => (
+  <motion.div 
+    className="flex justify-center mt-12 text-muted-foreground/50"
+    animate={{ y: [0, 8, 0] }}
+    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+  >
+    <ChevronDown className="size-8" />
+  </motion.div>
+);
 
 export default function About() {
   return (
@@ -22,6 +32,7 @@ export default function About() {
               <p className="text-lg md:text-xl text-muted-foreground">{developerInfo.title} • {developerInfo.subtitle}</p>
             </motion.div>
           </div>
+          <SectionScrollHint />
         </section>
 
         {/* Bio Section */}
@@ -60,6 +71,7 @@ export default function About() {
               </ScrollReveal>
             </div>
           </div>
+          <SectionScrollHint />
         </section>
 
         {/* Experience Section */}
@@ -102,6 +114,7 @@ export default function About() {
               ))}
             </div>
           </div>
+          <SectionScrollHint />
         </section>
 
         {/* Research & Publication Section */}
@@ -131,6 +144,7 @@ export default function About() {
               ))}
             </div>
           </div>
+          <SectionScrollHint />
         </section>
 
         {/* Skills */}
@@ -191,6 +205,7 @@ export default function About() {
               </div>
             </ScrollReveal>
           </div>
+          <SectionScrollHint />
         </section>
 
         {/* Certifications */}
@@ -207,11 +222,20 @@ export default function About() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {certifications.map((cert, index) => {
                 const CardContent = (
-                  <div className="glass-card rounded-xl p-5 flex items-start gap-4 gradient-border transition-all duration-300 hover:shadow-[0_0_15px_var(--glow-primary)] w-full h-full">
-                    <Award className="size-5 text-primary shrink-0 mt-0.5" />
+                  <div className={`glass-card rounded-xl p-5 flex items-start gap-4 gradient-border transition-all duration-300 w-full h-full ${
+                    cert.highlight 
+                      ? 'shadow-[0_0_20px_rgba(255,153,0,0.2)] border-[#FF9900]/50 hover:shadow-[0_0_30px_rgba(255,153,0,0.5)] bg-gradient-to-br from-background to-[#FF9900]/5 hover:-translate-y-1' 
+                      : 'hover:shadow-[0_0_15px_var(--glow-primary)]'
+                  }`}>
+                    <Award className={`shrink-0 mt-0.5 ${cert.highlight ? 'size-6 text-[#FF9900]' : 'size-5 text-primary'}`} />
                     <div>
-                      <p className="font-medium text-sm">{cert.title}</p>
-                      <p className="text-xs text-muted-foreground">{cert.issuer}</p>
+                      <p className={`font-medium ${cert.highlight ? 'text-base text-foreground font-bold' : 'text-sm'}`}>{cert.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{cert.issuer}</p>
+                      {cert.highlight && (
+                        <span className="inline-block mt-2 text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full bg-[#FF9900]/10 text-[#FF9900] border border-[#FF9900]/20">
+                          Verified Badge
+                        </span>
+                      )}
                     </div>
                   </div>
                 );
@@ -230,6 +254,7 @@ export default function About() {
               })}
             </div>
           </div>
+          <SectionScrollHint />
         </section>
 
         {/* Hobbies */}

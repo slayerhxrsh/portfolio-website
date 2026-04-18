@@ -207,6 +207,12 @@ export const skillCategories: SkillCategory[] = [
 ];
 
 export const certifications: Certification[] = [
+  { 
+    title: 'AWS Certified Cloud Practitioner', 
+    issuer: 'Amazon Web Services (AWS)', 
+    url: 'https://www.credly.com/badges/9a945124-3df1-4a2a-a5e2-5710354d7f46/public_url',
+    highlight: true 
+  },
   { title: 'Python for Everybody', issuer: 'Coursera', url: 'https://drive.google.com/file/d/1gJmX914-_3B9gAWZzxQ_sjqqLVFszeG_/view?usp=sharing' },
   { title: 'Intelligent Systems in AI', issuer: 'Infosys Springboard', url: 'https://drive.google.com/file/d/1-yv99Ou6JrFdoP13L6lBrXPAERJiZTcl/view?usp=drive_link' },
   { title: 'Introduction to Databases', issuer: 'Coursera', url: 'https://drive.google.com/file/d/1GZ-pxmgzNgBPgWKLTiAtDYUnBvSYvqWa/view?usp=sharing' },

@@ -26,6 +26,7 @@ export interface Certification {
   title: string;
   issuer: string;
   url?: string;
+  highlight?: boolean;
 }
 
 export interface DeveloperInfo {

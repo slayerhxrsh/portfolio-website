@@ -3,7 +3,7 @@ import { developerInfo, getFeaturedProjects } from '@/data/developer';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 import { SEOHead } from '@/components/seo/SEOHead';
-import { ArrowRight, Download, Github, Linkedin } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import profilePhoto from '@/assets/profile-photo.jpg';
@@ -29,7 +29,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center space-y-8">
+          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center space-y-6">
             {/* Profile Photo */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -58,6 +58,12 @@ export default function Home() {
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
                 <span className="gradient-text">Harsh Srivastava</span>
               </h1>
+              <div className="flex items-center justify-center pt-2">
+                <a href="https://www.credly.com/badges/9a945124-3df1-4a2a-a5e2-5710354d7f46/public_url" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF9900]/10 text-[#FF9900] border border-[#FF9900]/20 text-sm md:text-base font-semibold tracking-wide hover:bg-[#FF9900]/20 transition-colors">
+                  <Award className="size-4 md:size-5" />
+                  AWS CCP Certified
+                </a>
+              </div>
               <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-lg md:text-xl text-muted-foreground">
                 <span className="font-medium text-foreground">{developerInfo.title}</span>
                 <span className="hidden md:block text-border">|</span>
@@ -125,7 +131,7 @@ export default function Home() {
 
           {/* Scroll Indicator */}
           <motion.div
-            className="absolute bottom-8"
+            className="absolute bottom-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}
