@@ -5,7 +5,7 @@ import brainwaveImg from '@/assets/Brainwave.png';
 export const developerInfo: DeveloperInfo = {
   name: 'Harsh Srivastava',
   title: 'Aspiring DevOps Engineer',
-  subtitle: 'Frontend Engineer',
+  subtitle: 'Frontend Engineer | AI Engineer',
   tagline: 'Building scalable infrastructure, automated systems, and modern web experiences.',
   bio: `I’m Harsh Srivastava. My core focus is on DevOps, cloud infrastructure, and automation. I genuinely enjoy the challenge of building scalable and reliable systems from the ground up—whether that means orchestrating containers with Docker, configuring CI/CD pipelines, or architecting environments on AWS.\n\nWhile infrastructure and backend operations are my primary strengths, I also have a solid foundation in frontend development. I regularly use React and Tailwind CSS to build clean, interactive user interfaces, allowing me to bridge the gap between complex server environments and seamless user experiences.\n\nI treat tech as a continuous learning curve. I'm always exploring new tools, from Nginx proxy routing to the latest AI developments. My ultimate goal is simple: to combine rock-solid infrastructure with modern web development to deliver highly efficient software.`,
   email: 'harshsrivastava1427.work@gmail.com',
