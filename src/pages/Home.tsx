@@ -65,6 +65,8 @@ export default function Home() {
                 </a>
               </div>
               <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-lg md:text-xl text-muted-foreground">
+                <span>AI Engineer</span>
+                <span className="hidden md:block text-border">|</span>
                 <span className="font-medium text-foreground">{developerInfo.title}</span>
                 <span className="hidden md:block text-border">|</span>
                 <span>{developerInfo.subtitle}</span>
