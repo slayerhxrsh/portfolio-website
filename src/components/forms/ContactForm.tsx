@@ -69,6 +69,11 @@ export function ContactForm() {
         document.body.removeChild(iframe);
       }, 2000);
 
+      // Redirect to WhatsApp API
+      const whatsappMessage = `*New Contact Form Submission*\n\n*Name:* ${data.name}\n*Email:* ${data.email}\n\n*Message:*\n${data.message}`;
+      const whatsappUrl = `https://wa.me/919501951191?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(whatsappUrl, '_blank');
+
       setIsSuccess(true);
       form.reset();
       setTimeout(() => setIsSuccess(false), 5000);

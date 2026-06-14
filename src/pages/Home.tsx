@@ -99,7 +99,7 @@ export default function Home() {
                   Contact Me
                 </Button>
               </Link>
-              <a href="/Resume_Harsh%20Srivastava.pdf" download="Resume_Harsh Srivastava.pdf">
+              <a href="/Resume_HarshSrivastava.pdf" download="Resume_HarshSrivastava.pdf">
                 <Button size="lg" variant="ghost" className="gap-2 px-8">
                   <Download className="size-4" />
                   Resume

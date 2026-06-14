@@ -193,7 +193,7 @@ export default function About() {
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">Actively learning and building with these technologies right now:</p>
                 <div className="flex flex-wrap gap-3">
-                  {['Jenkins', 'Kubernetes'].map((tech) => (
+                  {['Agentic AI', 'Kubernetes'].map((tech) => (
                     <span
                       key={tech}
                       className="text-sm px-4 py-2 rounded-lg border border-primary/40 bg-primary/10 text-primary font-semibold tracking-wide hover:bg-primary hover:text-primary-foreground transition-all duration-300"

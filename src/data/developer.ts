@@ -165,6 +165,9 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Anthropic' },
       { name: 'Emergent' },
       { name: 'Lovable' },
+      { name: 'Agentic AI' },
+      { name: 'RAG' },
+      { name: 'LLMs' },
     ],
   },
   {
@@ -232,6 +235,15 @@ export const hobbies = [
 ];
 
 export const experiences: Experience[] = [
+  {
+    role: 'AI Backend Engineer (Intern)',
+    company: 'Azalio Technologies',
+    duration: 'May 2026 – Present',
+    location: 'Mohali, Punjab',
+    responsibilities: [
+      'Working on AI-powered backend systems, contributing to development and integration of intelligent APIs.',
+    ],
+  },
   {
     role: 'Operations and Treasurer (Student Member)',
     company: 'Eloquence Consortium – Chandigarh University',
