@@ -20,7 +20,7 @@ export default function Home() {
 
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
+        <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center pt-16 pb-16">
           {/* Animated gradient background */}
           <div className="absolute inset-0 bg-background">
             <div className="absolute inset-0 tech-grid-bg opacity-50" />
@@ -29,7 +29,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center space-y-6">
+          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center space-y-5">
             {/* Profile Photo */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -55,7 +55,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-4"
             >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
                 <span className="gradient-text">Harsh Srivastava</span>
               </h1>
               <div className="flex items-center justify-center pt-2">
@@ -64,11 +64,11 @@ export default function Home() {
                   AWS CCP Certified
                 </a>
               </div>
-              <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-lg md:text-xl text-muted-foreground">
+              <div className="flex flex-row items-center justify-center flex-wrap gap-x-2 gap-y-1 md:gap-4 text-base md:text-xl text-muted-foreground">
                 <span>AI Engineer</span>
-                <span className="hidden md:block text-border">|</span>
+                <span className="text-border">|</span>
                 <span className="font-medium text-foreground">{developerInfo.title}</span>
-                <span className="hidden md:block text-border">|</span>
+                <span className="text-border">|</span>
                 <span>{developerInfo.subtitle}</span>
               </div>
             </motion.div>
@@ -78,7 +78,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+              className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
             >
               {developerInfo.tagline}
             </motion.p>
