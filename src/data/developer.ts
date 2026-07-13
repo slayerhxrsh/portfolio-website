@@ -168,6 +168,7 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Agentic AI' },
       { name: 'RAG' },
       { name: 'LLMs' },
+      { name: 'OpenRouter' },
     ],
   },
   {
