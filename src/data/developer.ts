@@ -162,7 +162,10 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: 'GPT' },
       { name: 'Gemini' },
-      { name: 'Anthropic' },
+      { name: 'Claude' },
+      { name: 'LangGraph' },
+      { name: 'Langfuse' },
+      { name: 'GitHub SDD' },
       { name: 'Emergent' },
       { name: 'Lovable' },
       { name: 'Agentic AI' },
