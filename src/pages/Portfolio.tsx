@@ -6,7 +6,7 @@ import { Github, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
-const categories = ['all', 'frontend', 'devops', 'fullstack'] as const;
+const categories = ['all', 'frontend', 'devops', 'fullstack', 'ai'] as const;
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<string>('all');

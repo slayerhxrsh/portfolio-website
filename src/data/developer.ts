@@ -137,6 +137,26 @@ export const projects: DevProject[] = [
     category: 'devops',
     featured: true,
   },
+  {
+    id: 'ai-teaching-agent',
+    title: 'AI Teaching Agent',
+    slug: 'ai-teaching-agent',
+    description: 'An intelligent agent that generates personalized study guides for candidates preparing for technical interviews.',
+    longDescription: 'Built at Azalio Technologies, this AI-powered teaching agent dynamically generates comprehensive, personalized study guides tailored to candidates preparing for future technical interviews. It leverages LLMs and agentic workflows to analyze target roles and curate structured learning paths, covering key concepts, common interview patterns, and practical examples.',
+    techStack: ['Python', 'LangGraph', 'LLMs', 'Agentic AI', 'OpenRouter', 'RAG'],
+    category: 'ai',
+    featured: true,
+  },
+  {
+    id: 'correction-agent-stt',
+    title: 'Correction Agent for Speech-to-Text Platform',
+    slug: 'correction-agent-speech-to-text',
+    description: 'An AI agent that corrects technical transcript mishearings and domain-specific terminology in speech-to-text outputs.',
+    longDescription: 'Developed at Azalio Technologies, this correction agent is integrated into a speech-to-text platform to fix common mishearings of technical jargon, product names, and domain-specific terms in transcripts. It uses LLM-based reasoning to intelligently identify and replace incorrectly transcribed words with their proper technical equivalents, significantly improving transcript accuracy for technical interviews and conversations.',
+    techStack: ['Python', 'LLMs', 'Agentic AI', 'NLP', 'LangGraph', 'OpenRouter'],
+    category: 'ai',
+    featured: true,
+  },
 ];
 
 export const getProjectBySlug = (slug: string) => projects.find(p => p.slug === slug);

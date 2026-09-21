@@ -5,7 +5,7 @@ export interface DevProject {
   description: string;
   longDescription?: string;
   techStack: string[];
-  category: 'frontend' | 'devops' | 'fullstack' | 'blockchain';
+  category: 'frontend' | 'devops' | 'fullstack' | 'blockchain' | 'ai';
   githubUrl?: string;
   liveUrl?: string;
   coverImage?: string;
