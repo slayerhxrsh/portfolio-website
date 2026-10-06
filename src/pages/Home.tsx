@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <SEOHead
-        title="Harsh Srivastava — DevOps & Frontend Engineer"
+        title="Harsh Srivastava — AI Backend Engineer"
         description={developerInfo.tagline}
       />
 
@@ -151,7 +151,7 @@ export default function Home() {
                   Featured <span className="gradient-text">Projects</span>
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  A selection of my recent work across DevOps and Frontend development
+                  A selection of my recent work across AI, DevOps and Frontend development
                 </p>
               </div>
             </ScrollReveal>

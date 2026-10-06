@@ -46,7 +46,7 @@ export function SEOHead({ title, description, image, type = 'website' }: SEOHead
     updateMetaTag('twitter:description', fullDescription);
     if (image) updateMetaTag('twitter:image', image);
     updateMetaTag('author', developerInfo.name);
-    updateMetaTag('keywords', `DevOps, Frontend, ${developerInfo.name}, developer, portfolio, React, Docker, AWS`);
+    updateMetaTag('keywords', `AI Backend Engineer, Agentic AI, LangGraph, RAG, LLM, DevOps, ${developerInfo.name}, developer, portfolio, Python, Docker, AWS`);
   }, [fullTitle, fullDescription, fullUrl, image, type]);
 
   return null;

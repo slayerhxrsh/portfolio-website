@@ -4,10 +4,10 @@ import brainwaveImg from '@/assets/Brainwave.png';
 
 export const developerInfo: DeveloperInfo = {
   name: 'Harsh Srivastava',
-  title: 'Aspiring DevOps Engineer',
-  subtitle: 'Frontend Engineer',
-  tagline: 'Building scalable infrastructure, automated systems, and modern web experiences.',
-  bio: `I’m Harsh Srivastava. My core focus is on DevOps, cloud infrastructure, and automation. I genuinely enjoy the challenge of building scalable and reliable systems from the ground up—whether that means orchestrating containers with Docker, configuring CI/CD pipelines, or architecting environments on AWS.\n\nWhile infrastructure and backend operations are my primary strengths, I also have a solid foundation in frontend development. I regularly use React and Tailwind CSS to build clean, interactive user interfaces, allowing me to bridge the gap between complex server environments and seamless user experiences.\n\nI treat tech as a continuous learning curve. I'm always exploring new tools, from Nginx proxy routing to the latest AI developments. My ultimate goal is simple: to combine rock-solid infrastructure with modern web development to deliver highly efficient software.`,
+  title: 'AI Backend Engineer',
+  subtitle: 'Cloud & DevOps',
+  tagline: 'Building agentic AI workflows, LLM-powered backends, and intelligent APIs on a solid cloud foundation.',
+  bio: `I’m Harsh Srivastava, a Computer Science graduate and AI Backend Engineer. My core focus is on Agentic AI and LLM applications—building practical AI workflows with LangGraph, RAG, and LLM APIs, and turning them into reliable, intelligent backend systems and APIs.\n\nAt Azalio Technologies, I work on AI-powered backend systems, including a transcript correction agent that repairs misheard technical terms, uses AI self-verification to decide when external web research is needed, and leaves uncertain corrections for human review. I also built an AI Teaching Agent that turns interview requirements into personalized study guides.\n\nBehind the AI work is a strong foundation in cloud and DevOps—Docker, AWS, NGINX, Jenkins, and CI/CD pipelines—along with frontend skills in React and Tailwind CSS. I treat tech as a continuous learning curve, and my goal is simple: to build AI systems that are not just smart, but dependable in production.`,
   email: 'harshsrivastava1427.work@gmail.com',
   phone: '+91 9501951191',
   location: 'Mohali, Punjab, India',
@@ -20,6 +20,26 @@ export const developerInfo: DeveloperInfo = {
 };
 
 export const projects: DevProject[] = [
+  {
+    id: 'ai-teaching-agent',
+    title: 'AI Teaching Agent (Study Guide Generator)',
+    slug: 'ai-teaching-agent',
+    description: 'An agentic workflow that analyzes technical roles and generates structured, personalized interview-preparation study guides.',
+    longDescription: 'Built an agentic workflow that analyzes technical roles and generates structured, personalized interview-preparation study guides. Designed workflows for question analysis, web-grounded research, candidate-answer evaluation, and identification of weak areas. Uses LLM-driven workflows to convert interview requirements into structured learning paths covering key concepts, interview patterns, and practical examples.',
+    techStack: ['Python', 'LangGraph', 'LLMs', 'Agentic AI', 'OpenRouter', 'RAG'],
+    category: 'ai',
+    featured: true,
+  },
+  {
+    id: 'meetily-correction-agent',
+    title: 'Meetily – Transcript Correction Agent',
+    slug: 'meetily-transcript-correction-agent',
+    description: 'An AI-powered correction agent for Meetily’s audio-to-transcript pipeline that repairs inaccurate Hinglish and technical-term transcriptions.',
+    longDescription: 'Extended Meetily’s audio-to-transcript pipeline with an AI-powered correction agent to improve inaccurate Hinglish and technical-term transcriptions. Developed an automated workflow that identifies and repairs misheard terms, uses AI self-verification to decide when external web research is required, and leaves uncertain corrections for human review.',
+    techStack: ['Python', 'LLMs', 'Agentic AI', 'APIs', 'LangGraph'],
+    category: 'ai',
+    featured: true,
+  },
   {
     id: 'docker-3-tier',
     title: '3-Tier Application using Docker Compose',
@@ -137,26 +157,6 @@ export const projects: DevProject[] = [
     category: 'devops',
     featured: true,
   },
-  {
-    id: 'ai-teaching-agent',
-    title: 'AI Teaching Agent',
-    slug: 'ai-teaching-agent',
-    description: 'An intelligent agent that generates personalized study guides for candidates preparing for technical interviews.',
-    longDescription: 'Built at Azalio Technologies, this AI-powered teaching agent dynamically generates comprehensive, personalized study guides tailored to candidates preparing for future technical interviews. It leverages LLMs and agentic workflows to analyze target roles and curate structured learning paths, covering key concepts, common interview patterns, and practical examples.',
-    techStack: ['Python', 'LangGraph', 'LLMs', 'Agentic AI', 'OpenRouter', 'RAG'],
-    category: 'ai',
-    featured: true,
-  },
-  {
-    id: 'correction-agent-stt',
-    title: 'Correction Agent for Speech-to-Text Platform',
-    slug: 'correction-agent-speech-to-text',
-    description: 'An AI agent that corrects technical transcript mishearings and domain-specific terminology in speech-to-text outputs.',
-    longDescription: 'Developed at Azalio Technologies, this correction agent is integrated into a speech-to-text platform to fix common mishearings of technical jargon, product names, and domain-specific terms in transcripts. It uses LLM-based reasoning to intelligently identify and replace incorrectly transcribed words with their proper technical equivalents, significantly improving transcript accuracy for technical interviews and conversations.',
-    techStack: ['Python', 'LLMs', 'Agentic AI', 'NLP', 'LangGraph', 'OpenRouter'],
-    category: 'ai',
-    featured: true,
-  },
 ];
 
 export const getProjectBySlug = (slug: string) => projects.find(p => p.slug === slug);
@@ -265,7 +265,10 @@ export const experiences: Experience[] = [
     duration: 'May 2026 – Present',
     location: 'Mohali, Punjab',
     responsibilities: [
-      'Working on AI-powered backend systems, contributing to development and integration of intelligent APIs.',
+      'Contributing to AI-powered backend systems and intelligent APIs for real-world applications.',
+      'Worked on an AI-based transcript correction workflow to identify and repair misheard technical terms while leaving uncertain corrections unchanged.',
+      'Designed and refined automated correction workflows involving AI self-verification and deciding when external web research is required.',
+      'Contributed to speaker-identification and transcript-processing workflows and validated improvements using real interview recordings.',
     ],
   },
   {
